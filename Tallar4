@@ -1,0 +1,72 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Tamaño del vector
+        Console.Write("Ingresa el tamaño del vector: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Crear un vector de tamaño N
+        int[] vector = new int[n];
+
+        // Llenar el vector aleatoriamente con números enteros en un rango personalizado
+        Random random = new Random();
+        for (int i = 0; i < n; i++)
+        {
+            vector[i] = random.Next(10, 100); // Cambia los valores según sea necesario
+        }
+
+        // Mostrar el vector
+        Console.WriteLine("Vector generado:");
+        MostrarVector(vector);
+
+        // Pedir un número al usuario
+        Console.Write("Ingresa un número para buscar en el vector: ");
+        int numeroBuscado;
+        if (int.TryParse(Console.ReadLine(), out numeroBuscado))
+        {
+            // Buscar el número en el vector
+            int posicion = BuscarNumero(vector, numeroBuscado);
+
+            // Mostrar el resultado
+            if (posicion != -1)
+            {
+                Console.WriteLine($"El número {numeroBuscado} se encuentra en la posición {posicion + 1} del vector.");
+            }
+            else
+            {
+                Console.WriteLine($"El número {numeroBuscado} no existe en el vector.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Por favor, ingresa un número válido.");
+        }
+    }
+
+    // Método para mostrar el contenido de un vector
+    static void MostrarVector(int[] vector)
+    {
+        foreach (var numero in vector)
+        {
+            Console.Write(numero + " ");
+        }
+        Console.WriteLine();
+    }
+
+    // Método para buscar un número en un vector y devolver su posición (índice)
+    // Devuelve -1 si el número no se encuentra en el vector
+    static int BuscarNumero(int[] vector, int numero)
+    {
+        for (int i = 0; i < vector.Length; i++)
+        {
+            if (vector[i] == numero)
+            {
+                return i; // Se encontró el número, devuelve la posición (índice)
+            }
+        }
+        return -1; // El número no se encuentra en el vector
+    }
+}
