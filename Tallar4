@@ -7,21 +7,17 @@ class Program
         // Tamaño del vector
         Console.Write("Ingresa el tamaño del vector: ");
         int n = int.Parse(Console.ReadLine());
-
         // Crear un vector de tamaño N
         int[] vector = new int[n];
-
         // Llenar el vector aleatoriamente con números enteros en un rango personalizado
         Random random = new Random();
         for (int i = 0; i < n; i++)
         {
             vector[i] = random.Next(10, 100); // Cambia los valores según sea necesario
         }
-
         // Mostrar el vector
         Console.WriteLine("Vector generado:");
         MostrarVector(vector);
-
         // Pedir un número al usuario
         Console.Write("Ingresa un número para buscar en el vector: ");
         int numeroBuscado;
@@ -55,7 +51,6 @@ class Program
         }
         Console.WriteLine();
     }
-
     // Método para buscar un número en un vector y devolver su posición (índice)
     // Devuelve -1 si el número no se encuentra en el vector
     static int BuscarNumero(int[] vector, int numero)
